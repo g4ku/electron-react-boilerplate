@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Counter.css';
+import * as styles from './Counter.styles';
 import routes from '../constants/routes';
+import { CounterState } from '../reducers/counter';
 
-export default class Counter extends Component {
+type Props = {
+  increment: () => void;
+  incrementIfOdd: () => void;
+  incrementAsync: () => void;
+  decrement: () => void;
+  counter: CounterState;
+};
+
+export default class Counter extends Component<Props> {
   render() {
     const {
       increment,
@@ -20,7 +29,7 @@ export default class Counter extends Component {
           </Link>
         </div>
         <div className={`counter ${styles.counter}`} data-tid="counter">
-          {counter}
+          {counter.count}
         </div>
         <div className={styles.btnGroup}>
           <button

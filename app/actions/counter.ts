@@ -1,3 +1,6 @@
+import { Dispatch } from 'redux';
+import { AppState } from '../reducers';
+
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 
@@ -14,10 +17,10 @@ export function decrement() {
 }
 
 export function incrementIfOdd() {
-  return (dispatch, getState) => {
+  return (dispatch: Dispatch, getState: () => AppState) => {
     const { counter } = getState();
 
-    if (counter % 2 === 0) {
+    if (counter.count % 2 === 0) {
       return;
     }
 
@@ -26,7 +29,7 @@ export function incrementIfOdd() {
 }
 
 export function incrementAsync(delay = 1000) {
-  return dispatch => {
+  return (dispatch: Dispatch) => {
     setTimeout(() => {
       dispatch(increment());
     }, delay);

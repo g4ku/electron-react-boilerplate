@@ -1,24 +1,26 @@
-.backButton {
-  position: absolute;
-}
+import { css } from 'emotion';
 
-.counter {
+export const backButton = css`
+  position: absolute;
+`;
+
+export const counter = css`
   position: absolute;
   top: 30%;
   left: 45%;
   font-size: 10rem;
   font-weight: bold;
   letter-spacing: -0.025em;
-}
+`;
 
-.btnGroup {
+export const btnGroup = css`
   position: relative;
   top: 500px;
   width: 480px;
   margin: 0 auto;
-}
+`;
 
-.btn {
+export const btn = css`
   font-size: 1.6rem;
   font-weight: bold;
   background-color: #fff;
@@ -29,9 +31,9 @@
   opacity: 0.7;
   cursor: pointer;
   font-family: Arial, Helvetica, Helvetica Neue, sans-serif;
-}
 
-.btn:hover {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  &:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+`;

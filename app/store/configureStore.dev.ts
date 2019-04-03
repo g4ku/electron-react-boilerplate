@@ -10,7 +10,7 @@ const history = createHashHistory();
 
 const rootReducer = createRootReducer(history);
 
-const configureStore = initialState => {
+const configureStore = (initialState?: any) => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
@@ -39,9 +39,11 @@ const configureStore = initialState => {
     ...routerActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
+  const windowlfDefined =
+    typeof window === 'undefined' ? null : (window as any);
   /* eslint-disable no-underscore-dangle */
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+  const composeEnhancers = windowlfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? windowlfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
         // Options: http://extension.remotedev.io/docs/API/Arguments.html
         actionCreators
       })

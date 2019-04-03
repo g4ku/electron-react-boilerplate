@@ -4,6 +4,7 @@
 
 import path from 'path';
 import webpack from 'webpack';
+import paths from './paths';
 import { dependencies } from '../package.json';
 
 export default {
@@ -12,14 +13,17 @@ export default {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
-          }
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          },
+          { loader: 'ts-loader' }
+        ]
       }
     ]
   },
@@ -34,7 +38,7 @@ export default {
    * Determine the array of extensions that should be used to resolve modules.
    */
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: paths.moduleFileExtensions.map(ext => `.${ext}`)
   },
 
   plugins: [
